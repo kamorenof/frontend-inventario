@@ -1,0 +1,61 @@
+:root {
+  --background: #14655F;
+  --navs: #06392E;
+  --logocolor2: #CF1010;
+  --black: #07120D;
+  --white: #FFFFFF;
+  --grey: #A6A6A6;
+  font-size: 62.5%;
+}
+
+.movimientos-container {
+  padding: 2rem;
+  background-color: var(--white);
+  min-height: 100vh;
+}
+
+.titulo-movimiento {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--navs);
+  text-align: center;
+}
+
+.formulario-encabezado {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.input-movimiento,
+.input-responsable,
+.dropdown-movimiento {
+  flex: 1 1 200px;
+}
+
+.tabla-movimiento {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.tabla-productos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.4rem;
+}
+
+.tabla-productos th,
+.tabla-productos td {
+  border: 1px solid var(--grey);
+  padding: 0.8rem;
+  text-align: left;
+}
+
+.botones-movimiento {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}

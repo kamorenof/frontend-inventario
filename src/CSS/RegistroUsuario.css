@@ -1,0 +1,62 @@
+:root {
+  --background: #14655F;
+  --navs: #06392E;
+  --logocolor2: #CF1010;
+  --black: #07120D;
+  --white: #FFFFFF;
+  --grey: #A6A6A6;
+  font-size: 62.5%;
+}
+
+/* Contenedor principal centrado */
+.registro-container {
+  background-color: var(--background);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Tarjeta de registro */
+.registro-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: var(--white);
+  border-radius: 1rem;
+}
+
+/* Formulario vertical con espacio entre campos */
+.registro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Estilo para el mensaje de error o éxito */
+.registro-mensaje {
+  display: block;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: var(--logocolor2);
+  font-size: 1.4rem;
+}
+
+/* Estilo para el enlace de login */
+.registro-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.registro-link a {
+  color: var(--navs);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.registro-link a:hover {
+  text-decoration: underline;
+}

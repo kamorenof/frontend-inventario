@@ -1,0 +1,59 @@
+/* src/CSS/Login.css */
+:root {
+  --background: #14655F;
+  --navs: #06392E;
+  --logocolor2: #CF1010;
+  --black: #07120D;
+  --white: #FFFFFF;
+  --grey: #A6A6A6;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--background);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--background);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.p-float-label input,
+.p-password-input {
+  width: 100%;
+}
+
+.text-error {
+  color: var(--logocolor2);
+  font-weight: bold;
+  text-align: center;
+}
+
+.login-link {
+  color: var(--black);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.login-link a {
+  color: var(--logocolor2);
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}

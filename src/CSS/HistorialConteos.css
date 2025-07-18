@@ -1,0 +1,55 @@
+:root {
+  --background: #14655F;
+  --navs: #06392E;
+  --logocolor2: #CF1010;
+  --black: #07120D;
+  --white: #FFFFFF;
+  --grey: #A6A6A6;
+  font-size: 62.5%;
+}
+
+.historial-container {
+  padding: 2rem;
+  background-color: var(--white);
+  min-height: 100vh;
+}
+
+.historial-titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--navs);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.historial-filtros {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tabla-responsive {
+  overflow-x: auto;
+}
+
+.historial-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.4rem;
+}
+
+.historial-tabla th,
+.historial-tabla td {
+  border: 1px solid var(--grey);
+  padding: 1rem;
+  text-align: left;
+}
+
+.sin-registros {
+  text-align: center;
+  color: var(--grey);
+  padding: 2rem;
+  font-size: 1.4rem;
+}

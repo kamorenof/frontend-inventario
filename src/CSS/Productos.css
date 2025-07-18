@@ -1,0 +1,32 @@
+.productos-container {
+  padding: 2rem;
+  background-color: var(--background);
+  min-height: 100vh;
+  color: var(--white);
+}
+
+.productos-toolbar {
+  margin-bottom: 2rem;
+}
+
+.productos-acciones {
+  display: flex;
+  gap: 1rem;
+}
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--black);
+}
+
+@media (max-width: 768px) {
+  .productos-acciones {
+    flex-direction: column;
+  }
+
+  .productos-container {
+    padding: 1rem;
+  }
+}

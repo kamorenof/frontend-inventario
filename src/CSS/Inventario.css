@@ -1,0 +1,48 @@
+:root {
+  --background: #14655F;
+  --navs: #06392E;
+  --logocolor2: #CF1010;
+  --black: #07120D;
+  --white: #FFFFFF;
+  --grey: #A6A6A6;
+  font-size: 62.5%;
+}
+
+.inventario-container {
+  padding: 2rem;
+  background-color: var(--white);
+  min-height: 100vh;
+}
+
+.inventario-titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--navs);
+  text-align: center;
+}
+
+.tabla-responsive {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.inventario-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.4rem;
+}
+
+.inventario-tabla th,
+.inventario-tabla td {
+  border: 1px solid var(--grey);
+  padding: 1rem;
+  text-align: left;
+}
+
+.inventario-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}

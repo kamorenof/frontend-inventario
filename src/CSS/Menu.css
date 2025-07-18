@@ -1,0 +1,122 @@
+:root {
+  --background: #14655F;
+  --navs: #06392E;
+  --logocolor2: #CF1010;
+  --black: #07120D;
+  --white: #FFFFFF;
+  --grey: #A6A6A6;
+  font-size: 62.5%;
+}
+
+/* Contenedor principal del menú */
+.menu-container {
+  padding: 2rem;
+  background-color: var(--background);
+  min-height: 100vh;
+  color: var(--white);
+}
+
+/* Encabezado con nombre del usuario y botón de cerrar sesión */
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Texto de bienvenida */
+.menu-bienvenida {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+/* Estilos para el menú de pestañas */
+.menu-tabs {
+  background-color: var(--navs);
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+/* Mensaje de instrucciones */
+.menu-instrucciones {
+  margin-top: 2rem;
+  text-align: center;
+  color: var(--grey);
+  font-size: 1.6rem;
+}
+
+/* Responsive para el header */
+@media (max-width: 768px) {
+  .menu-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .menu-bienvenida {
+    text-align: center;
+  }
+}
+
+/* Sección contenedora de combos */
+.menu-combos {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  color: var(--black);
+  margin-top: 2rem;
+}
+
+/* Título de la sección de combos */
+.menu-combos h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--black);
+}
+
+/* Carrusel horizontal para combos */
+.menu-combos-carrusel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+/* Cada item de combo */
+.menu-combo-item {
+  min-width: 200px;
+  max-width: 220px;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+/* Estilo de la imagen del combo */
+.menu-combo-img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.menu-combo-img:hover {
+  transform: scale(1.02);
+}
+
+/* Texto cuando no hay combos */
+.menu-combos-vacio {
+  font-style: italic;
+  color: gray;
+}
+
+/* Responsive: carrusel en columna */
+@media (max-width: 768px) {
+  .menu-combos-carrusel {
+    flex-direction: column;
+  }
+}

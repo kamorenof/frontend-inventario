@@ -1,0 +1,51 @@
+:root {
+  --background: #14655F;
+  --navs: #06392E;
+  --logocolor2: #CF1010;
+  --black: #07120D;
+  --white: #FFFFFF;
+  --grey: #A6A6A6;
+  font-size: 62.5%;
+}
+
+.conteo-container {
+  padding: 2rem;
+  background-color: var(--white);
+  min-height: 100vh;
+}
+
+.conteo-titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--navs);
+  text-align: center;
+}
+
+.tabla-responsive {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.conteo-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.4rem;
+}
+
+.conteo-tabla th,
+.conteo-tabla td {
+  border: 1px solid var(--grey);
+  padding: 1rem;
+  text-align: left;
+}
+
+.conteo-tabla td.text-center {
+  text-align: center;
+}
+
+.conteo-botones {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
