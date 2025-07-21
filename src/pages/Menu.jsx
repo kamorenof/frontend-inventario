@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { TabMenu } from 'primereact/tabmenu';
 import { Button } from 'primereact/button';
-import { Dialog } from 'primereact/dialog'; // Para vista ampliada de imágenes
+import { Dialog } from 'primereact/dialog';
 import { useNavigate } from 'react-router-dom';
-import '../CSS/Menu.css'; // Hoja de estilos personalizada
+import '../CSS/Menu.css';
 
 const Menu = () => {
   const navigate = useNavigate();
   const nombreUsuario = localStorage.getItem('nombreUsuario') || 'Usuario';
 
-  // Opciones del menú principal
   const items = [
     { label: 'Inicio', icon: 'pi pi-home' },
     { label: 'Productos', icon: 'pi pi-box', command: () => navigate('/productos') },
@@ -19,12 +18,10 @@ const Menu = () => {
     { label: 'Reportes', icon: 'pi pi-chart-line' }
   ];
 
-  // Estados para imágenes
   const [imagenes, setImagenes] = useState([]);
   const [cargando, setCargando] = useState(true);
-  const [imagenSeleccionada, setImagenSeleccionada] = useState(null); // Imagen para vista grande
+  const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
 
-  // Al montar, obtener las imágenes guardadas en el servidor
   useEffect(() => {
     fetch('https://backend-inventario-final.onrender.com/api/combos')
       .then(res => res.json())
@@ -38,7 +35,6 @@ const Menu = () => {
       });
   }, []);
 
-  // Subir nueva imagen
   const handleAgregarImagen = async (e) => {
     const archivo = e.target.files[0];
     if (!archivo) return;
@@ -54,10 +50,10 @@ const Menu = () => {
 
       const data = await res.json();
       if (res.ok) {
-        setImagenes(prev => [...prev, {
-          filename: data.filename,
-          url: `https://backend-inventario-final.onrender.com/uploads/combos/${data.filename}`
-        }]);
+        // Recargar combos desde el backend para obtener el nuevo
+        const nuevaRes = await fetch('https://backend-inventario-final.onrender.com/api/combos');
+        const combosActualizados = await nuevaRes.json();
+        setImagenes(combosActualizados);
       } else {
         alert(`❌ Error al subir: ${data.mensaje}`);
       }
@@ -66,19 +62,18 @@ const Menu = () => {
     }
   };
 
-  // Eliminar imagen del servidor y del estado
-  const eliminarImagen = async (filename) => {
+  const eliminarImagen = async (id) => {
     const confirmacion = confirm('¿Estás seguro de eliminar esta imagen?');
     if (!confirmacion) return;
 
     try {
-      const res = await fetch(`https://backend-inventario-final.onrender.com/api/combos/${filename}`, {
+      const res = await fetch(`https://backend-inventario-final.onrender.com/api/combos/${id}`, {
         method: 'DELETE'
       });
       const data = await res.json();
 
       if (res.ok) {
-        setImagenes(prev => prev.filter(img => img.filename !== filename));
+        setImagenes(prev => prev.filter(img => img.id !== id));
       } else {
         alert(`❌ Error al eliminar: ${data.mensaje}`);
       }
@@ -87,7 +82,6 @@ const Menu = () => {
     }
   };
 
-  // Cerrar sesión
   const cerrarSesion = () => {
     localStorage.clear();
     navigate('/login');
@@ -95,7 +89,6 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
-      {/* Encabezado con bienvenida y botón de logout */}
       <div className="menu-header">
         <h2 className="menu-bienvenida">Bienvenido, {nombreUsuario}</h2>
         <Button
@@ -106,10 +99,8 @@ const Menu = () => {
         />
       </div>
 
-      {/* Menú de navegación */}
       <TabMenu model={items} className="menu-tabs" />
 
-      {/* Sección de combos de la semana */}
       <div className="menu-combos mt-5">
         <h3 className="text-white text-xl mb-2">🔥 Combos de la Semana</h3>
 
@@ -120,24 +111,23 @@ const Menu = () => {
         ) : (
           <div className="menu-combos-carrusel">
             {imagenes.map((img) => (
-              <div key={img.filename} className="menu-combo-item">
+              <div key={img.id} className="menu-combo-item">
                 <img
-                  src={img.url}
-                  alt={img.filename}
+                  src={img.imagen_url}
+                  alt="Combo"
                   className="menu-combo-img cursor-pointer"
-                  onClick={() => setImagenSeleccionada(img.url)}
+                  onClick={() => setImagenSeleccionada(img.imagen_url)}
                 />
                 <Button
                   icon="pi pi-trash"
                   className="p-button-danger p-button-sm mt-2"
-                  onClick={() => eliminarImagen(img.filename)}
+                  onClick={() => eliminarImagen(img.id)}
                 />
               </div>
             ))}
           </div>
         )}
 
-        {/* Botón para agregar imagen */}
         <label htmlFor="combo-upload" className="p-button p-button-primary mt-3 inline-block cursor-pointer">
           <i className="pi pi-plus mr-2"></i>Agregar Imagen
         </label>
@@ -150,7 +140,6 @@ const Menu = () => {
         />
       </div>
 
-      {/* Diálogo con imagen grande */}
       <Dialog
         header="Vista previa"
         visible={!!imagenSeleccionada}
@@ -165,7 +154,6 @@ const Menu = () => {
         />
       </Dialog>
 
-      {/* Instrucciones al final */}
       <div className="menu-instrucciones">
         <p>Selecciona una pestaña del menú para comenzar.</p>
       </div>
