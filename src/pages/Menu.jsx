@@ -12,7 +12,7 @@ const Menu = () => {
   const items = [
     { label: 'Inicio', icon: 'pi pi-home' },
     { label: 'Productos', icon: 'pi pi-box', command: () => navigate('/productos') },
-    { label: 'Movimientos', icon: 'pi pi-arrow-right-arrow-lef', command: () => navigate('/movimientos') },
+    { label: 'Movimientos', icon: 'pi pi-exchange', command: () => navigate('/movimientos') },
     { label: 'Historial', icon: 'pi pi-calendar', command: () => navigate('/historial') },
     { label: 'Inventario', icon: 'pi pi-box', command: () => navigate('/inventario') },
     { label: 'Reportes', icon: 'pi pi-chart-line' }
@@ -50,10 +50,8 @@ const Menu = () => {
 
       const data = await res.json();
       if (res.ok) {
-        // Recargar combos desde el backend para obtener el nuevo
-        const nuevaRes = await fetch('https://backend-inventario-final.onrender.com/api/combos');
-        const combosActualizados = await nuevaRes.json();
-        setImagenes(combosActualizados);
+        // Agregamos la imagen que viene con su URL e ID
+        setImagenes(prev => [...prev, { id: data.id, imagen_url: data.url }]);
       } else {
         alert(`❌ Error al subir: ${data.mensaje}`);
       }
@@ -70,8 +68,8 @@ const Menu = () => {
       const res = await fetch(`https://backend-inventario-final.onrender.com/api/combos/${id}`, {
         method: 'DELETE'
       });
-      const data = await res.json();
 
+      const data = await res.json();
       if (res.ok) {
         setImagenes(prev => prev.filter(img => img.id !== id));
       } else {
@@ -114,7 +112,7 @@ const Menu = () => {
               <div key={img.id} className="menu-combo-item">
                 <img
                   src={img.imagen_url}
-                  alt="Combo"
+                  alt={`combo-${img.id}`}
                   className="menu-combo-img cursor-pointer"
                   onClick={() => setImagenSeleccionada(img.imagen_url)}
                 />
